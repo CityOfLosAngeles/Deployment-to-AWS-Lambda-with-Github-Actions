@@ -11,7 +11,7 @@ on:
 # - AWS_SESSION_TOKEN
 # - AWS_REGION
 # - S3_BUCKET_NAME
-# - AWS_ROLE_TO_ASSUME
+# - AWS_ROLE_TO_ASSUME (not currently active)
 # - AWS_ROLE_EXTERNAL_ID (not currently active)
 
 
@@ -31,10 +31,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME}}
+          # role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME}}
           # role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
-          role-duration-seconds: 1200
-          role-session-name: GitHubAction
+          # role-duration-seconds: 1200
+          # role-session-name: GitHubAction
           mask-aws-account-id: true
       - name: Push to S3
         run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude ".git/*" --exclude ".github/*" --delete
