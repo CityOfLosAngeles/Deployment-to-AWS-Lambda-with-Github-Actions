@@ -37,10 +37,8 @@ jobs:
           # role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
           # role-duration-seconds: 1200
           # role-session-name: GitHubAction
-      - name: Install zip command
-        run: sudo apt install zip
-      # - name: Archive directory to zip file
-      #   run: zip -r src.zip .
+      - name: Archive directory to zip file
+        run: zip -r src.zip .
       # - uses: montudor/action-zip@v0.1.0 # 3rd party action using Alpine on docker to zip directory
       #   with:
       #     args: zip -qq src.zip .
