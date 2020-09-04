@@ -37,10 +37,12 @@ jobs:
           # role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
           # role-duration-seconds: 1200
           # role-session-name: GitHubAction
-      - name: LS
-        run: ls
+      - name: Read path
+        run: readlink .
       - name: Archive directory to zip file
         run: sudo zip -r /src.zip . -x .git/\* .github/\*
+      - name: LS
+        run: ls /
       # - name: Push to S3
       #   run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude '*' --include '*/src.zip' --delete
       - name: Update Lambda function code
