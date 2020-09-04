@@ -43,6 +43,6 @@ jobs:
       #   with:
       #     args: zip -qq src.zip .
       - name: Push to S3
-        run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --include '*/src.zip' --delete
+        run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude '*' --include '*/src.zip' --delete
       #- name: Update Lambda function code
       #  run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket {{ secrets.S3_BUCKET_NAME }}
