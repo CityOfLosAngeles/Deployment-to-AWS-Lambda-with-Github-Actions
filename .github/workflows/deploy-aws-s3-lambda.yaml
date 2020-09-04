@@ -42,4 +42,4 @@ jobs:
         run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude '*' --include '*/src.zip' --delete
       - name: Update Lambda function code
         # run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --zip-file fileb://src.zip
-        run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket {{ secrets.S3_BUCKET_NAME }} --s3-key src.zip
+        run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket ${{ secrets.S3_BUCKET_NAME }} --s3-key src.zip
