@@ -11,6 +11,7 @@ on:
 # - AWS_SESSION_TOKEN
 # - AWS_REGION
 # - S3_BUCKET_NAME
+# - LAMBDA_FUNCTION_NAME
 # - AWS_ROLE_TO_ASSUME (not currently active)
 # - AWS_ROLE_EXTERNAL_ID (not currently active)
 
@@ -38,3 +39,5 @@ jobs:
           mask-aws-account-id: true
       - name: Push to S3
         run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude ".git/*" --exclude ".github/*" --delete
+      #- name: Update Lambda function code
+      #  run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket {{ secrets.S3_BUCKET_NAME }}
