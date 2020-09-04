@@ -10,10 +10,10 @@ on:
 # - AWS_SECRET_ACCESS_KEY
 # - AWS_SESSION_TOKEN
 # - AWS_REGION
-# - S3_BUCKET_NAME
 # - LAMBDA_FUNCTION_NAME
-# - AWS_ROLE_TO_ASSUME (not currently active)
-# - AWS_ROLE_EXTERNAL_ID (not currently active)
+# - S3_BUCKET_NAME (if using S3)
+# - AWS_ROLE_TO_ASSUME (only if using assumed role)
+# - AWS_ROLE_EXTERNAL_ID (only if using assumed role)
 
 jobs:
   deploy:
