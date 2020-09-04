@@ -38,7 +38,7 @@ jobs:
           # role-duration-seconds: 1200
           # role-session-name: GitHubAction
       - name: Archive directory to zip file
-        run: zip -r src.zip . -x .git/ .github/
+        run: zip -r src.zip . -x .git/\* .github/\*
       # - uses: montudor/action-zip@v0.1.0 # 3rd party action using Alpine on docker to zip directory
       #   with:
       #     args: zip -qq src.zip .
