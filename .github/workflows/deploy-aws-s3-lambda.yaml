@@ -15,7 +15,6 @@ on:
 # - AWS_ROLE_TO_ASSUME (not currently active)
 # - AWS_ROLE_EXTERNAL_ID (not currently active)
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -37,13 +36,10 @@ jobs:
           # role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
           # role-duration-seconds: 1200
           # role-session-name: GitHubAction
-      - name: Read path
-        run: readlink -f src.zip
       - name: Archive directory to zip file
         run: sudo zip -r src.zip . -x .git/\* .github/\*
-      - name: LS
-        run: ls /
       # - name: Push to S3
       #   run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude '*' --include '*/src.zip' --delete
       - name: Update Lambda function code
-        run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --zip-file fileb://src.zip # --s3-bucket {{ secrets.S3_BUCKET_NAME }}
+        run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --zip-file fileb://src.zip
+        # run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket {{ secrets.S3_BUCKET_NAME }}
