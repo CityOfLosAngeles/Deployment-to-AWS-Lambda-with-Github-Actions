@@ -38,7 +38,7 @@ jobs:
           # role-duration-seconds: 1200
           # role-session-name: GitHubAction
       - name: Archive directory to zip file
-        run: zip -r /src.zip . -x .git/\* .github/\*
+        run: sudo zip -r /src.zip . -x .git/\* .github/\*
       # - name: Push to S3
       #   run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude '*' --include '*/src.zip' --delete
       - name: Update Lambda function code
