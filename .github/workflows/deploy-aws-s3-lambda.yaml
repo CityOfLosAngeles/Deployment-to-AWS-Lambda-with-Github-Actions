@@ -38,9 +38,9 @@ jobs:
           # role-duration-seconds: 1200
           # role-session-name: GitHubAction
       - name: Read path
-        run: readlink -f /src.zip
+        run: readlink -f src.zip
       - name: Archive directory to zip file
-        run: sudo zip -r /src.zip . -x .git/\* .github/\*
+        run: sudo zip -r src.zip . -x .git/\* .github/\*
       - name: LS
         run: ls /
       # - name: Push to S3
