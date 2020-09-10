@@ -39,7 +39,6 @@ jobs:
       - name: Archive directory to zip file
         run: sudo zip -r src.zip . -x .git/\* .github/\*
       - name: Push to S3
-        # run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exclude '*' --include 'src.zip' --delete
         run: aws s3 cp ./src.zip s3://${{ secrets.S3_BUCKET_NAME }}/src.zip
       - name: Update Lambda function code
         # run: aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --zip-file fileb://src.zip
